@@ -14,7 +14,9 @@
   },
   "devDependencies": {
     "playwright-core": "^1.63.0",
-    "wrangler": "^4.42.0",
+    "wrangler": "^4.42.0"
+  },
+  "dependencies": {
     "xlsx": "0.18.5"
   }
 }
