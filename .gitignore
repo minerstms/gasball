@@ -1,0 +1,6 @@
+node_modules/
+.wrangler/
+dist/
+data/raw/
+_worker.bundle
+*.log

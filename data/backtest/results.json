@@ -1,0 +1,1498 @@
+{
+  "modelVersion": "distributed-lag-v1",
+  "protocol": {
+    "evaluation": "chronological walk-forward",
+    "trainingRule": "At origin t, training targets end on or before t. Features at a row use prices on or before that row. Compared models share those origins.",
+    "thresholdRule": "7-day BUY/WAIT uses a fixed symmetric FINE band. The band is the smallest candidate in {3, 5, 7.5, 10, 15} cents that shows economic separation. It is not chosen by direction accuracy.",
+    "confidenceBefore": "The previous UI percent was the walk-forward direction hit rate of the whole WAIT or BUY group under the old adaptive cutoff near ±1 cent. A WAIT display of 83% meant 83.17% of those Colorado WAIT calls had a negative actual 7-day change. It was not a probability for that forecast's magnitude.",
+    "confidenceAfter": "Confidence is LOW, MODERATE, or HIGH from magnitude bins of strictly earlier out-of-sample forecasts. A bin needs at least 40 calls. MODERATE also needs direction hit rate of at least 60% and a mean outcome of at least 3 cents in the predicted direction. HIGH needs at least 80 calls, a 70% direction hit rate, and a mean outcome of at least 5 cents in the predicted direction. The UI does not show a percent.",
+    "production": "Distributed-lag coefficients stay frozen between approved retrains. This script does not update them from live errors."
+  },
+  "denverGrade": {
+    "productionSeries": "EMM_EPMR_PTE_YDEN_DPG",
+    "productionGrade": "Denver regular all formulations",
+    "allGradesSeries": "EMM_EPM0_PTE_YDEN_DPG",
+    "latestRegularDollars": 4.033,
+    "latestAllGradesDollars": 4.222,
+    "latestColoradoRegularDollars": 4.094,
+    "regularVersusAllGradesChanges": {
+      "weeks": 1373,
+      "correlation": 0.9995249439276404,
+      "maeCents": 0.14989075018208708
+    },
+    "denverRegularVersusColoradoRegularChanges": {
+      "weeks": 1373,
+      "correlation": 0.9818665296744163,
+      "maeCents": 0.9732702112163137
+    },
+    "decision": "Denver forecasts use the Denver regular all-formulations series. All-grades prices are not the target."
+  },
+  "markets": {
+    "colorado": {
+      "seriesId": "EMM_EPMR_PTE_SCO_DPG",
+      "serves": [
+        "trinidad",
+        "pueblo",
+        "colorado-springs"
+      ],
+      "asOf": "2026-09-28",
+      "retailDollars": 4.094,
+      "fineBandCents": 5,
+      "fineBandFellBackTo15": false,
+      "thresholdRule": "Smallest symmetric FINE band among ±3, ±5, ±7.5, ±10, and ±15 cents where FINE is at least 35% of weeks, each side has at least 40 calls, at least half of those calls move 5 cents in the signaled direction, the mean BUY outcome is positive, the mean WAIT outcome is negative, those means differ by at least 5 cents, each side's expected 15-gallon result is above $0.50, and the false strong-signal rate is at most 45%. Direction accuracy is not the selection score.",
+      "thresholdComparison": [
+        {
+          "band": 3,
+          "buy": {
+            "count": 247,
+            "percentActualDirection": 0.8016,
+            "percentActualAtLeastFiveCents": 0.4494,
+            "mae": 6.0886,
+            "meanActual": 4.9652,
+            "medianActual": 3.5,
+            "expectedSavingsDollarsPer15Gal": 0.7448,
+            "meanSavingsWhenCorrectDollarsPer15Gal": 1.1256,
+            "meanMissedCostWhenWrongDollarsPer15Gal": 0.7941
+          },
+          "wait": {
+            "count": 313,
+            "percentActualDirection": 0.869,
+            "percentActualAtLeastFiveCents": 0.4569,
+            "mae": 3.6041,
+            "meanActual": -5.1968,
+            "medianActual": -4.6,
+            "expectedSavingsDollarsPer15Gal": 0.7795,
+            "meanSavingsWhenCorrectDollarsPer15Gal": 1.0154,
+            "meanMissedCostWhenWrongDollarsPer15Gal": 0.7855
+          },
+          "fine": {
+            "count": 585,
+            "percentOfWeeks": 0.5109
+          },
+          "falseStrongSignalRate": 0.1607,
+          "strongShareOfWeeks": 0.4891
+        },
+        {
+          "band": 5,
+          "buy": {
+            "count": 135,
+            "percentActualDirection": 0.7926,
+            "percentActualAtLeastFiveCents": 0.5259,
+            "mae": 7.3603,
+            "meanActual": 5.9689,
+            "medianActual": 5.5,
+            "expectedSavingsDollarsPer15Gal": 0.8953,
+            "meanSavingsWhenCorrectDollarsPer15Gal": 1.3738,
+            "meanMissedCostWhenWrongDollarsPer15Gal": 0.9332
+          },
+          "wait": {
+            "count": 170,
+            "percentActualDirection": 0.9235,
+            "percentActualAtLeastFiveCents": 0.6588,
+            "mae": 3.7834,
+            "meanActual": -7.5265,
+            "medianActual": -6.6,
+            "expectedSavingsDollarsPer15Gal": 1.129,
+            "meanSavingsWhenCorrectDollarsPer15Gal": 1.2903,
+            "meanMissedCostWhenWrongDollarsPer15Gal": 0.8192
+          },
+          "fine": {
+            "count": 840,
+            "percentOfWeeks": 0.7336
+          },
+          "falseStrongSignalRate": 0.1344,
+          "strongShareOfWeeks": 0.2664
+        },
+        {
+          "band": 7.5,
+          "buy": {
+            "count": 57,
+            "percentActualDirection": 0.7544,
+            "percentActualAtLeastFiveCents": 0.5789,
+            "mae": 9.4013,
+            "meanActual": 8.1947,
+            "medianActual": 6.3,
+            "expectedSavingsDollarsPer15Gal": 1.2292,
+            "meanSavingsWhenCorrectDollarsPer15Gal": 1.8823,
+            "meanMissedCostWhenWrongDollarsPer15Gal": 0.7768
+          },
+          "wait": {
+            "count": 77,
+            "percentActualDirection": 0.961,
+            "percentActualAtLeastFiveCents": 0.8442,
+            "mae": 4.1379,
+            "meanActual": -10.9623,
+            "medianActual": -9.5,
+            "expectedSavingsDollarsPer15Gal": 1.6444,
+            "meanSavingsWhenCorrectDollarsPer15Gal": 1.7278,
+            "meanMissedCostWhenWrongDollarsPer15Gal": 0.415
+          },
+          "fine": {
+            "count": 1011,
+            "percentOfWeeks": 0.883
+          },
+          "falseStrongSignalRate": 0.1269,
+          "strongShareOfWeeks": 0.117
+        },
+        {
+          "band": 10,
+          "buy": {
+            "count": 25,
+            "percentActualDirection": 0.72,
+            "percentActualAtLeastFiveCents": 0.64,
+            "mae": 11.7511,
+            "meanActual": 10.944,
+            "medianActual": 9.6,
+            "expectedSavingsDollarsPer15Gal": 1.6416,
+            "meanSavingsWhenCorrectDollarsPer15Gal": 2.5833,
+            "meanMissedCostWhenWrongDollarsPer15Gal": 0.78
+          },
+          "wait": {
+            "count": 31,
+            "percentActualDirection": 0.9677,
+            "percentActualAtLeastFiveCents": 0.9355,
+            "mae": 4.8996,
+            "meanActual": -14.0129,
+            "medianActual": -14.5,
+            "expectedSavingsDollarsPer15Gal": 2.1019,
+            "meanSavingsWhenCorrectDollarsPer15Gal": 2.2035,
+            "meanMissedCostWhenWrongDollarsPer15Gal": 0.945
+          },
+          "fine": {
+            "count": 1089,
+            "percentOfWeeks": 0.9511
+          },
+          "falseStrongSignalRate": 0.1429,
+          "strongShareOfWeeks": 0.0489
+        },
+        {
+          "band": 15,
+          "buy": {
+            "count": 10,
+            "percentActualDirection": 0.7,
+            "percentActualAtLeastFiveCents": 0.6,
+            "mae": 13.5933,
+            "meanActual": 11.61,
+            "medianActual": 10.7,
+            "expectedSavingsDollarsPer15Gal": 1.7415,
+            "meanSavingsWhenCorrectDollarsPer15Gal": 2.8093,
+            "meanMissedCostWhenWrongDollarsPer15Gal": 0.75
+          },
+          "wait": {
+            "count": 6,
+            "percentActualDirection": 1,
+            "percentActualAtLeastFiveCents": 1,
+            "mae": 5.5486,
+            "meanActual": -23.3667,
+            "medianActual": -22.85,
+            "expectedSavingsDollarsPer15Gal": 3.505,
+            "meanSavingsWhenCorrectDollarsPer15Gal": 3.505,
+            "meanMissedCostWhenWrongDollarsPer15Gal": null
+          },
+          "fine": {
+            "count": 1129,
+            "percentOfWeeks": 0.986
+          },
+          "falseStrongSignalRate": 0.1875,
+          "strongShareOfWeeks": 0.014
+        }
+      ],
+      "confidenceBins": [
+        {
+          "bin": "0-3",
+          "direction": "up",
+          "count": 298,
+          "directionHitRate": 0.6477,
+          "meanActual": 2.7221,
+          "medianActual": 1.3,
+          "outcomeDistribution": {
+            "atOrBelowNeg10": 0.0134,
+            "neg10ToNeg5": 0.0134,
+            "neg5To0": 0.3054,
+            "zero": 0.0201,
+            "above0To5": 0.4027,
+            "fiveTo10": 0.1376,
+            "atOrAbove10": 0.1074
+          },
+          "label": "LOW"
+        },
+        {
+          "bin": "0-3",
+          "direction": "down",
+          "count": 287,
+          "directionHitRate": 0.6899,
+          "meanActual": -0.7742,
+          "medianActual": -1.3,
+          "outcomeDistribution": {
+            "atOrBelowNeg10": 0.0279,
+            "neg10ToNeg5": 0.0801,
+            "neg5To0": 0.5819,
+            "zero": 0.007,
+            "above0To5": 0.2021,
+            "fiveTo10": 0.0662,
+            "atOrAbove10": 0.0348
+          },
+          "label": "LOW"
+        },
+        {
+          "bin": "3-5",
+          "direction": "up",
+          "count": 112,
+          "directionHitRate": 0.8125,
+          "meanActual": 3.7554,
+          "medianActual": 2.75,
+          "outcomeDistribution": {
+            "atOrBelowNeg10": 0.0357,
+            "neg10ToNeg5": 0.0179,
+            "neg5To0": 0.1071,
+            "zero": 0.0268,
+            "above0To5": 0.4554,
+            "fiveTo10": 0.2679,
+            "atOrAbove10": 0.0893
+          },
+          "label": "MODERATE"
+        },
+        {
+          "bin": "3-5",
+          "direction": "down",
+          "count": 143,
+          "directionHitRate": 0.8042,
+          "meanActual": -2.4273,
+          "medianActual": -3,
+          "outcomeDistribution": {
+            "atOrBelowNeg10": 0.0559,
+            "neg10ToNeg5": 0.1608,
+            "neg5To0": 0.5874,
+            "zero": 0.007,
+            "above0To5": 0.1259,
+            "fiveTo10": 0.035,
+            "atOrAbove10": 0.028
+          },
+          "label": "LOW"
+        },
+        {
+          "bin": "5-7.5",
+          "direction": "up",
+          "count": 78,
+          "directionHitRate": 0.8205,
+          "meanActual": 4.3423,
+          "medianActual": 4.85,
+          "outcomeDistribution": {
+            "atOrBelowNeg10": 0.0385,
+            "neg10ToNeg5": 0.0513,
+            "neg5To0": 0.0897,
+            "zero": 0,
+            "above0To5": 0.3333,
+            "fiveTo10": 0.3333,
+            "atOrAbove10": 0.1538
+          },
+          "label": "MODERATE"
+        },
+        {
+          "bin": "5-7.5",
+          "direction": "down",
+          "count": 93,
+          "directionHitRate": 0.8925,
+          "meanActual": -4.6817,
+          "medianActual": -5.2,
+          "outcomeDistribution": {
+            "atOrBelowNeg10": 0.1075,
+            "neg10ToNeg5": 0.3978,
+            "neg5To0": 0.3871,
+            "zero": 0,
+            "above0To5": 0.043,
+            "fiveTo10": 0.043,
+            "atOrAbove10": 0.0215
+          },
+          "label": "MODERATE"
+        },
+        {
+          "bin": "7.5-10",
+          "direction": "up",
+          "count": 32,
+          "directionHitRate": 0.7813,
+          "meanActual": 6.0469,
+          "medianActual": 5.4,
+          "outcomeDistribution": {
+            "atOrBelowNeg10": 0.0625,
+            "neg10ToNeg5": 0.0313,
+            "neg5To0": 0.125,
+            "zero": 0,
+            "above0To5": 0.25,
+            "fiveTo10": 0.25,
+            "atOrAbove10": 0.2813
+          },
+          "label": "LOW"
+        },
+        {
+          "bin": "7.5-10",
+          "direction": "down",
+          "count": 46,
+          "directionHitRate": 0.9565,
+          "meanActual": -8.9065,
+          "medianActual": -8.05,
+          "outcomeDistribution": {
+            "atOrBelowNeg10": 0.3261,
+            "neg10ToNeg5": 0.4565,
+            "neg5To0": 0.1739,
+            "zero": 0,
+            "above0To5": 0.0435,
+            "fiveTo10": 0,
+            "atOrAbove10": 0
+          },
+          "label": "MODERATE"
+        },
+        {
+          "bin": "10-15",
+          "direction": "up",
+          "count": 15,
+          "directionHitRate": 0.7333,
+          "meanActual": 10.5,
+          "medianActual": 9.6,
+          "outcomeDistribution": {
+            "atOrBelowNeg10": 0,
+            "neg10ToNeg5": 0.1333,
+            "neg5To0": 0.1333,
+            "zero": 0,
+            "above0To5": 0.0667,
+            "fiveTo10": 0.2,
+            "atOrAbove10": 0.4667
+          },
+          "label": "LOW"
+        },
+        {
+          "bin": "10-15",
+          "direction": "down",
+          "count": 25,
+          "directionHitRate": 0.96,
+          "meanActual": -11.768,
+          "medianActual": -10.3,
+          "outcomeDistribution": {
+            "atOrBelowNeg10": 0.56,
+            "neg10ToNeg5": 0.36,
+            "neg5To0": 0.04,
+            "zero": 0,
+            "above0To5": 0,
+            "fiveTo10": 0.04,
+            "atOrAbove10": 0
+          },
+          "label": "LOW"
+        },
+        {
+          "bin": "15+",
+          "direction": "up",
+          "count": 10,
+          "directionHitRate": 0.7,
+          "meanActual": 11.61,
+          "medianActual": 10.7,
+          "outcomeDistribution": {
+            "atOrBelowNeg10": 0,
+            "neg10ToNeg5": 0.1,
+            "neg5To0": 0.2,
+            "zero": 0,
+            "above0To5": 0.1,
+            "fiveTo10": 0.1,
+            "atOrAbove10": 0.5
+          },
+          "label": "LOW"
+        },
+        {
+          "bin": "15+",
+          "direction": "down",
+          "count": 6,
+          "directionHitRate": 1,
+          "meanActual": -23.3667,
+          "medianActual": -22.85,
+          "outcomeDistribution": {
+            "atOrBelowNeg10": 1,
+            "neg10ToNeg5": 0,
+            "neg5To0": 0,
+            "zero": 0,
+            "above0To5": 0,
+            "fiveTo10": 0,
+            "atOrAbove10": 0
+          },
+          "label": "LOW"
+        }
+      ],
+      "modelComparison": {
+        "distributedLag": {
+          "sampleCount": 1145,
+          "maeCents": 4.155,
+          "rmseCents": 6.664,
+          "directionalAccuracy": 0.7599,
+          "band5": {
+            "band": 5,
+            "buy": {
+              "count": 135,
+              "percentActualDirection": 0.7926,
+              "percentActualAtLeastFiveCents": 0.5259,
+              "mae": 7.3603,
+              "meanActual": 5.9689,
+              "medianActual": 5.5,
+              "expectedSavingsDollarsPer15Gal": 0.8953,
+              "meanSavingsWhenCorrectDollarsPer15Gal": 1.3738,
+              "meanMissedCostWhenWrongDollarsPer15Gal": 0.9332
+            },
+            "wait": {
+              "count": 170,
+              "percentActualDirection": 0.9235,
+              "percentActualAtLeastFiveCents": 0.6588,
+              "mae": 3.7834,
+              "meanActual": -7.5265,
+              "medianActual": -6.6,
+              "expectedSavingsDollarsPer15Gal": 1.129,
+              "meanSavingsWhenCorrectDollarsPer15Gal": 1.2903,
+              "meanMissedCostWhenWrongDollarsPer15Gal": 0.8192
+            },
+            "fine": {
+              "count": 840,
+              "percentOfWeeks": 0.7336
+            },
+            "falseStrongSignalRate": 0.1344,
+            "strongShareOfWeeks": 0.2664
+          },
+          "band10": {
+            "band": 10,
+            "buy": {
+              "count": 25,
+              "percentActualDirection": 0.72,
+              "percentActualAtLeastFiveCents": 0.64,
+              "mae": 11.7511,
+              "meanActual": 10.944,
+              "medianActual": 9.6,
+              "expectedSavingsDollarsPer15Gal": 1.6416,
+              "meanSavingsWhenCorrectDollarsPer15Gal": 2.5833,
+              "meanMissedCostWhenWrongDollarsPer15Gal": 0.78
+            },
+            "wait": {
+              "count": 31,
+              "percentActualDirection": 0.9677,
+              "percentActualAtLeastFiveCents": 0.9355,
+              "mae": 4.8996,
+              "meanActual": -14.0129,
+              "medianActual": -14.5,
+              "expectedSavingsDollarsPer15Gal": 2.1019,
+              "meanSavingsWhenCorrectDollarsPer15Gal": 2.2035,
+              "meanMissedCostWhenWrongDollarsPer15Gal": 0.945
+            },
+            "fine": {
+              "count": 1089,
+              "percentOfWeeks": 0.9511
+            },
+            "falseStrongSignalRate": 0.1429,
+            "strongShareOfWeeks": 0.0489
+          }
+        },
+        "spotOnly": {
+          "sampleCount": 1145,
+          "maeCents": 4.74,
+          "rmseCents": 7.249,
+          "directionalAccuracy": 0.6849,
+          "band5": {
+            "band": 5,
+            "buy": {
+              "count": 71,
+              "percentActualDirection": 0.7324,
+              "percentActualAtLeastFiveCents": 0.493,
+              "mae": 9.3165,
+              "meanActual": 5.6803,
+              "medianActual": 3.5,
+              "expectedSavingsDollarsPer15Gal": 0.852,
+              "meanSavingsWhenCorrectDollarsPer15Gal": 1.4677,
+              "meanMissedCostWhenWrongDollarsPer15Gal": 0.8329
+            },
+            "wait": {
+              "count": 65,
+              "percentActualDirection": 0.9231,
+              "percentActualAtLeastFiveCents": 0.6923,
+              "mae": 6.3643,
+              "meanActual": -9.2446,
+              "medianActual": -8.7,
+              "expectedSavingsDollarsPer15Gal": 1.3867,
+              "meanSavingsWhenCorrectDollarsPer15Gal": 1.664,
+              "meanMissedCostWhenWrongDollarsPer15Gal": 1.941
+            },
+            "fine": {
+              "count": 1009,
+              "percentOfWeeks": 0.8812
+            },
+            "falseStrongSignalRate": 0.1765,
+            "strongShareOfWeeks": 0.1188
+          },
+          "band10": {
+            "band": 10,
+            "buy": {
+              "count": 7,
+              "percentActualDirection": 0.1429,
+              "percentActualAtLeastFiveCents": 0.1429,
+              "mae": 20.0245,
+              "meanActual": -4.1857,
+              "medianActual": -4.5,
+              "expectedSavingsDollarsPer15Gal": -0.6279,
+              "meanSavingsWhenCorrectDollarsPer15Gal": 0.9,
+              "meanMissedCostWhenWrongDollarsPer15Gal": 0.8825
+            },
+            "wait": {
+              "count": 16,
+              "percentActualDirection": 1,
+              "percentActualAtLeastFiveCents": 1,
+              "mae": 6.585,
+              "meanActual": -17.2688,
+              "medianActual": -17.4,
+              "expectedSavingsDollarsPer15Gal": 2.5903,
+              "meanSavingsWhenCorrectDollarsPer15Gal": 2.5903,
+              "meanMissedCostWhenWrongDollarsPer15Gal": null
+            },
+            "fine": {
+              "count": 1122,
+              "percentOfWeeks": 0.9799
+            },
+            "falseStrongSignalRate": 0.2609,
+            "strongShareOfWeeks": 0.0201
+          }
+        },
+        "retailWholesale": {
+          "sampleCount": 1145,
+          "maeCents": 4.256,
+          "rmseCents": 6.873,
+          "directionalAccuracy": 0.7379,
+          "band5": {
+            "band": 5,
+            "buy": {
+              "count": 129,
+              "percentActualDirection": 0.7364,
+              "percentActualAtLeastFiveCents": 0.4729,
+              "mae": 7.9743,
+              "meanActual": 4.6876,
+              "medianActual": 3.6,
+              "expectedSavingsDollarsPer15Gal": 0.7031,
+              "meanSavingsWhenCorrectDollarsPer15Gal": 1.3203,
+              "meanMissedCostWhenWrongDollarsPer15Gal": 1.0213
+            },
+            "wait": {
+              "count": 92,
+              "percentActualDirection": 0.8913,
+              "percentActualAtLeastFiveCents": 0.7717,
+              "mae": 5.0943,
+              "meanActual": -9.2598,
+              "medianActual": -8.75,
+              "expectedSavingsDollarsPer15Gal": 1.389,
+              "meanSavingsWhenCorrectDollarsPer15Gal": 1.6979,
+              "meanMissedCostWhenWrongDollarsPer15Gal": 1.1445
+            },
+            "fine": {
+              "count": 924,
+              "percentOfWeeks": 0.807
+            },
+            "falseStrongSignalRate": 0.1991,
+            "strongShareOfWeeks": 0.193
+          },
+          "band10": {
+            "band": 10,
+            "buy": {
+              "count": 27,
+              "percentActualDirection": 0.5926,
+              "percentActualAtLeastFiveCents": 0.5185,
+              "mae": 12.9755,
+              "meanActual": 6.9074,
+              "medianActual": 6,
+              "expectedSavingsDollarsPer15Gal": 1.0361,
+              "meanSavingsWhenCorrectDollarsPer15Gal": 2.3803,
+              "meanMissedCostWhenWrongDollarsPer15Gal": 0.9191
+            },
+            "wait": {
+              "count": 23,
+              "percentActualDirection": 0.9565,
+              "percentActualAtLeastFiveCents": 0.913,
+              "mae": 5.317,
+              "meanActual": -15.4957,
+              "medianActual": -17.3,
+              "expectedSavingsDollarsPer15Gal": 2.3243,
+              "meanSavingsWhenCorrectDollarsPer15Gal": 2.473,
+              "meanMissedCostWhenWrongDollarsPer15Gal": 0.945
+            },
+            "fine": {
+              "count": 1095,
+              "percentOfWeeks": 0.9563
+            },
+            "falseStrongSignalRate": 0.24,
+            "strongShareOfWeeks": 0.0437
+          }
+        },
+        "persistence": {
+          "sampleCount": 1145,
+          "maeCents": 4.779,
+          "rmseCents": 8.015,
+          "directionalAccuracy": 0.7476,
+          "band5": {
+            "band": 5,
+            "buy": {
+              "count": 229,
+              "percentActualDirection": 0.7773,
+              "percentActualAtLeastFiveCents": 0.4585,
+              "mae": 8.6677,
+              "meanActual": 4.9341,
+              "medianActual": 4,
+              "expectedSavingsDollarsPer15Gal": 0.7401,
+              "meanSavingsWhenCorrectDollarsPer15Gal": 1.2043,
+              "meanMissedCostWhenWrongDollarsPer15Gal": 0.88
+            },
+            "wait": {
+              "count": 200,
+              "percentActualDirection": 0.85,
+              "percentActualAtLeastFiveCents": 0.635,
+              "mae": 5.785,
+              "meanActual": -6.083,
+              "medianActual": -6.7,
+              "expectedSavingsDollarsPer15Gal": 0.9125,
+              "meanSavingsWhenCorrectDollarsPer15Gal": 1.3041,
+              "meanMissedCostWhenWrongDollarsPer15Gal": 1.307
+            },
+            "fine": {
+              "count": 716,
+              "percentOfWeeks": 0.6253
+            },
+            "falseStrongSignalRate": 0.1888,
+            "strongShareOfWeeks": 0.3747
+          },
+          "band10": {
+            "band": 10,
+            "buy": {
+              "count": 90,
+              "percentActualDirection": 0.7111,
+              "percentActualAtLeastFiveCents": 0.5,
+              "mae": 13.9044,
+              "meanActual": 6.2322,
+              "medianActual": 5.1,
+              "expectedSavingsDollarsPer15Gal": 0.9348,
+              "meanSavingsWhenCorrectDollarsPer15Gal": 1.7381,
+              "meanMissedCostWhenWrongDollarsPer15Gal": 1.0425
+            },
+            "wait": {
+              "count": 73,
+              "percentActualDirection": 0.8219,
+              "percentActualAtLeastFiveCents": 0.7123,
+              "mae": 7.9411,
+              "meanActual": -8.3192,
+              "medianActual": -9.1,
+              "expectedSavingsDollarsPer15Gal": 1.2479,
+              "meanSavingsWhenCorrectDollarsPer15Gal": 1.7822,
+              "meanMissedCostWhenWrongDollarsPer15Gal": 1.2185
+            },
+            "fine": {
+              "count": 982,
+              "percentOfWeeks": 0.8576
+            },
+            "falseStrongSignalRate": 0.2393,
+            "strongShareOfWeeks": 0.1424
+          }
+        },
+        "zero": {
+          "sampleCount": 1145,
+          "maeCents": 5.328,
+          "rmseCents": 7.91,
+          "directionalAccuracy": 0,
+          "band5": {
+            "band": 5,
+            "buy": {
+              "count": 0,
+              "percentActualDirection": null,
+              "percentActualAtLeastFiveCents": null,
+              "mae": null,
+              "meanActual": null,
+              "medianActual": null,
+              "expectedSavingsDollarsPer15Gal": null,
+              "meanSavingsWhenCorrectDollarsPer15Gal": null,
+              "meanMissedCostWhenWrongDollarsPer15Gal": null
+            },
+            "wait": {
+              "count": 0,
+              "percentActualDirection": null,
+              "percentActualAtLeastFiveCents": null,
+              "mae": null,
+              "meanActual": null,
+              "medianActual": null,
+              "expectedSavingsDollarsPer15Gal": null,
+              "meanSavingsWhenCorrectDollarsPer15Gal": null,
+              "meanMissedCostWhenWrongDollarsPer15Gal": null
+            },
+            "fine": {
+              "count": 1145,
+              "percentOfWeeks": 1
+            },
+            "falseStrongSignalRate": null,
+            "strongShareOfWeeks": 0
+          },
+          "band10": {
+            "band": 10,
+            "buy": {
+              "count": 0,
+              "percentActualDirection": null,
+              "percentActualAtLeastFiveCents": null,
+              "mae": null,
+              "meanActual": null,
+              "medianActual": null,
+              "expectedSavingsDollarsPer15Gal": null,
+              "meanSavingsWhenCorrectDollarsPer15Gal": null,
+              "meanMissedCostWhenWrongDollarsPer15Gal": null
+            },
+            "wait": {
+              "count": 0,
+              "percentActualDirection": null,
+              "percentActualAtLeastFiveCents": null,
+              "mae": null,
+              "meanActual": null,
+              "medianActual": null,
+              "expectedSavingsDollarsPer15Gal": null,
+              "meanSavingsWhenCorrectDollarsPer15Gal": null,
+              "meanMissedCostWhenWrongDollarsPer15Gal": null
+            },
+            "fine": {
+              "count": 1145,
+              "percentOfWeeks": 1
+            },
+            "falseStrongSignalRate": null,
+            "strongShareOfWeeks": 0
+          }
+        }
+      },
+      "h14DistributedLag": {
+        "sampleCount": 1143,
+        "maeCents": 7.396
+      }
+    },
+    "denver": {
+      "seriesId": "EMM_EPMR_PTE_YDEN_DPG",
+      "serves": [
+        "denver"
+      ],
+      "asOf": "2026-09-28",
+      "retailDollars": 4.033,
+      "fineBandCents": 5,
+      "fineBandFellBackTo15": false,
+      "thresholdRule": "Smallest symmetric FINE band among ±3, ±5, ±7.5, ±10, and ±15 cents where FINE is at least 35% of weeks, each side has at least 40 calls, at least half of those calls move 5 cents in the signaled direction, the mean BUY outcome is positive, the mean WAIT outcome is negative, those means differ by at least 5 cents, each side's expected 15-gallon result is above $0.50, and the false strong-signal rate is at most 45%. Direction accuracy is not the selection score.",
+      "thresholdComparison": [
+        {
+          "band": 3,
+          "buy": {
+            "count": 256,
+            "percentActualDirection": 0.75,
+            "percentActualAtLeastFiveCents": 0.4258,
+            "mae": 6.2825,
+            "meanActual": 5.2363,
+            "medianActual": 3.65,
+            "expectedSavingsDollarsPer15Gal": 0.7854,
+            "meanSavingsWhenCorrectDollarsPer15Gal": 1.2336,
+            "meanMissedCostWhenWrongDollarsPer15Gal": 0.559
+          },
+          "wait": {
+            "count": 314,
+            "percentActualDirection": 0.8662,
+            "percentActualAtLeastFiveCents": 0.4586,
+            "mae": 3.879,
+            "meanActual": -5.2134,
+            "medianActual": -4.65,
+            "expectedSavingsDollarsPer15Gal": 0.782,
+            "meanSavingsWhenCorrectDollarsPer15Gal": 1.0364,
+            "meanMissedCostWhenWrongDollarsPer15Gal": 0.8654
+          },
+          "fine": {
+            "count": 575,
+            "percentOfWeeks": 0.5022
+          },
+          "falseStrongSignalRate": 0.186,
+          "strongShareOfWeeks": 0.4978
+        },
+        {
+          "band": 5,
+          "buy": {
+            "count": 132,
+            "percentActualDirection": 0.7652,
+            "percentActualAtLeastFiveCents": 0.5,
+            "mae": 7.2345,
+            "meanActual": 6.1371,
+            "medianActual": 5.15,
+            "expectedSavingsDollarsPer15Gal": 0.9206,
+            "meanSavingsWhenCorrectDollarsPer15Gal": 1.4191,
+            "meanMissedCostWhenWrongDollarsPer15Gal": 0.7035
+          },
+          "wait": {
+            "count": 173,
+            "percentActualDirection": 0.9191,
+            "percentActualAtLeastFiveCents": 0.6532,
+            "mae": 4.3608,
+            "meanActual": -7.3376,
+            "medianActual": -6.5,
+            "expectedSavingsDollarsPer15Gal": 1.1006,
+            "meanSavingsWhenCorrectDollarsPer15Gal": 1.3011,
+            "meanMissedCostWhenWrongDollarsPer15Gal": 1.1764
+          },
+          "fine": {
+            "count": 840,
+            "percentOfWeeks": 0.7336
+          },
+          "falseStrongSignalRate": 0.1475,
+          "strongShareOfWeeks": 0.2664
+        },
+        {
+          "band": 7.5,
+          "buy": {
+            "count": 57,
+            "percentActualDirection": 0.7368,
+            "percentActualAtLeastFiveCents": 0.5439,
+            "mae": 9.6085,
+            "meanActual": 8.6421,
+            "medianActual": 5.7,
+            "expectedSavingsDollarsPer15Gal": 1.2963,
+            "meanSavingsWhenCorrectDollarsPer15Gal": 1.9689,
+            "meanMissedCostWhenWrongDollarsPer15Gal": 0.587
+          },
+          "wait": {
+            "count": 75,
+            "percentActualDirection": 0.96,
+            "percentActualAtLeastFiveCents": 0.8667,
+            "mae": 4.9004,
+            "meanActual": -11.5013,
+            "medianActual": -10.6,
+            "expectedSavingsDollarsPer15Gal": 1.7252,
+            "meanSavingsWhenCorrectDollarsPer15Gal": 1.8431,
+            "meanMissedCostWhenWrongDollarsPer15Gal": 1.105
+          },
+          "fine": {
+            "count": 1013,
+            "percentOfWeeks": 0.8847
+          },
+          "falseStrongSignalRate": 0.1364,
+          "strongShareOfWeeks": 0.1153
+        },
+        {
+          "band": 10,
+          "buy": {
+            "count": 26,
+            "percentActualDirection": 0.7692,
+            "percentActualAtLeastFiveCents": 0.5769,
+            "mae": 11.1673,
+            "meanActual": 10.7423,
+            "medianActual": 7.5,
+            "expectedSavingsDollarsPer15Gal": 1.6113,
+            "meanSavingsWhenCorrectDollarsPer15Gal": 2.2942,
+            "meanMissedCostWhenWrongDollarsPer15Gal": 0.665
+          },
+          "wait": {
+            "count": 35,
+            "percentActualDirection": 0.9714,
+            "percentActualAtLeastFiveCents": 0.9143,
+            "mae": 5.3381,
+            "meanActual": -13.9829,
+            "medianActual": -13.5,
+            "expectedSavingsDollarsPer15Gal": 2.0974,
+            "meanSavingsWhenCorrectDollarsPer15Gal": 2.1882,
+            "meanMissedCostWhenWrongDollarsPer15Gal": 0.99
+          },
+          "fine": {
+            "count": 1084,
+            "percentOfWeeks": 0.9467
+          },
+          "falseStrongSignalRate": 0.1148,
+          "strongShareOfWeeks": 0.0533
+        },
+        {
+          "band": 15,
+          "buy": {
+            "count": 10,
+            "percentActualDirection": 0.6,
+            "percentActualAtLeastFiveCents": 0.4,
+            "mae": 15.8806,
+            "meanActual": 9.7,
+            "medianActual": 2.8,
+            "expectedSavingsDollarsPer15Gal": 1.455,
+            "meanSavingsWhenCorrectDollarsPer15Gal": 2.915,
+            "meanMissedCostWhenWrongDollarsPer15Gal": 0.735
+          },
+          "wait": {
+            "count": 6,
+            "percentActualDirection": 1,
+            "percentActualAtLeastFiveCents": 1,
+            "mae": 6.4154,
+            "meanActual": -22.35,
+            "medianActual": -24.7,
+            "expectedSavingsDollarsPer15Gal": 3.3525,
+            "meanSavingsWhenCorrectDollarsPer15Gal": 3.3525,
+            "meanMissedCostWhenWrongDollarsPer15Gal": null
+          },
+          "fine": {
+            "count": 1129,
+            "percentOfWeeks": 0.986
+          },
+          "falseStrongSignalRate": 0.25,
+          "strongShareOfWeeks": 0.014
+        }
+      ],
+      "confidenceBins": [
+        {
+          "bin": "0-3",
+          "direction": "up",
+          "count": 292,
+          "directionHitRate": 0.6164,
+          "meanActual": 2.1541,
+          "medianActual": 1,
+          "outcomeDistribution": {
+            "atOrBelowNeg10": 0.0274,
+            "neg10ToNeg5": 0.0205,
+            "neg5To0": 0.3219,
+            "zero": 0.0137,
+            "above0To5": 0.4007,
+            "fiveTo10": 0.1301,
+            "atOrAbove10": 0.0856
+          },
+          "label": "LOW"
+        },
+        {
+          "bin": "0-3",
+          "direction": "down",
+          "count": 283,
+          "directionHitRate": 0.6855,
+          "meanActual": -0.506,
+          "medianActual": -1.4,
+          "outcomeDistribution": {
+            "atOrBelowNeg10": 0.0389,
+            "neg10ToNeg5": 0.0707,
+            "neg5To0": 0.576,
+            "zero": 0.0177,
+            "above0To5": 0.1767,
+            "fiveTo10": 0.0777,
+            "atOrAbove10": 0.0424
+          },
+          "label": "LOW"
+        },
+        {
+          "bin": "3-5",
+          "direction": "up",
+          "count": 124,
+          "directionHitRate": 0.7339,
+          "meanActual": 4.2774,
+          "medianActual": 2.8,
+          "outcomeDistribution": {
+            "atOrBelowNeg10": 0.0081,
+            "neg10ToNeg5": 0.0484,
+            "neg5To0": 0.2097,
+            "zero": 0,
+            "above0To5": 0.3871,
+            "fiveTo10": 0.1935,
+            "atOrAbove10": 0.1532
+          },
+          "label": "MODERATE"
+        },
+        {
+          "bin": "3-5",
+          "direction": "down",
+          "count": 141,
+          "directionHitRate": 0.8014,
+          "meanActual": -2.6071,
+          "medianActual": -3.3,
+          "outcomeDistribution": {
+            "atOrBelowNeg10": 0.0496,
+            "neg10ToNeg5": 0.1702,
+            "neg5To0": 0.5816,
+            "zero": 0.0071,
+            "above0To5": 0.1277,
+            "fiveTo10": 0.0355,
+            "atOrAbove10": 0.0284
+          },
+          "label": "LOW"
+        },
+        {
+          "bin": "5-7.5",
+          "direction": "up",
+          "count": 75,
+          "directionHitRate": 0.7867,
+          "meanActual": 4.2333,
+          "medianActual": 4.1,
+          "outcomeDistribution": {
+            "atOrBelowNeg10": 0.04,
+            "neg10ToNeg5": 0.0667,
+            "neg5To0": 0.1067,
+            "zero": 0,
+            "above0To5": 0.32,
+            "fiveTo10": 0.28,
+            "atOrAbove10": 0.1867
+          },
+          "label": "MODERATE"
+        },
+        {
+          "bin": "5-7.5",
+          "direction": "down",
+          "count": 98,
+          "directionHitRate": 0.8878,
+          "meanActual": -4.151,
+          "medianActual": -4.8,
+          "outcomeDistribution": {
+            "atOrBelowNeg10": 0.1122,
+            "neg10ToNeg5": 0.3776,
+            "neg5To0": 0.398,
+            "zero": 0,
+            "above0To5": 0.051,
+            "fiveTo10": 0.0204,
+            "atOrAbove10": 0.0408
+          },
+          "label": "MODERATE"
+        },
+        {
+          "bin": "7.5-10",
+          "direction": "up",
+          "count": 31,
+          "directionHitRate": 0.7097,
+          "meanActual": 6.8806,
+          "medianActual": 5.6,
+          "outcomeDistribution": {
+            "atOrBelowNeg10": 0,
+            "neg10ToNeg5": 0.0645,
+            "neg5To0": 0.1935,
+            "zero": 0.0323,
+            "above0To5": 0.1935,
+            "fiveTo10": 0.1613,
+            "atOrAbove10": 0.3548
+          },
+          "label": "LOW"
+        },
+        {
+          "bin": "7.5-10",
+          "direction": "down",
+          "count": 40,
+          "directionHitRate": 0.95,
+          "meanActual": -9.33,
+          "medianActual": -9,
+          "outcomeDistribution": {
+            "atOrBelowNeg10": 0.425,
+            "neg10ToNeg5": 0.4,
+            "neg5To0": 0.125,
+            "zero": 0,
+            "above0To5": 0.025,
+            "fiveTo10": 0,
+            "atOrAbove10": 0.025
+          },
+          "label": "MODERATE"
+        },
+        {
+          "bin": "10-15",
+          "direction": "up",
+          "count": 16,
+          "directionHitRate": 0.875,
+          "meanActual": 11.3937,
+          "medianActual": 10.65,
+          "outcomeDistribution": {
+            "atOrBelowNeg10": 0,
+            "neg10ToNeg5": 0.0625,
+            "neg5To0": 0.0625,
+            "zero": 0,
+            "above0To5": 0.1875,
+            "fiveTo10": 0.1875,
+            "atOrAbove10": 0.5
+          },
+          "label": "LOW"
+        },
+        {
+          "bin": "10-15",
+          "direction": "down",
+          "count": 29,
+          "directionHitRate": 0.9655,
+          "meanActual": -12.2517,
+          "medianActual": -12.5,
+          "outcomeDistribution": {
+            "atOrBelowNeg10": 0.5862,
+            "neg10ToNeg5": 0.3103,
+            "neg5To0": 0.069,
+            "zero": 0,
+            "above0To5": 0,
+            "fiveTo10": 0.0345,
+            "atOrAbove10": 0
+          },
+          "label": "LOW"
+        },
+        {
+          "bin": "15+",
+          "direction": "up",
+          "count": 10,
+          "directionHitRate": 0.6,
+          "meanActual": 9.7,
+          "medianActual": 2.8,
+          "outcomeDistribution": {
+            "atOrBelowNeg10": 0,
+            "neg10ToNeg5": 0.2,
+            "neg5To0": 0.2,
+            "zero": 0,
+            "above0To5": 0.2,
+            "fiveTo10": 0,
+            "atOrAbove10": 0.4
+          },
+          "label": "LOW"
+        },
+        {
+          "bin": "15+",
+          "direction": "down",
+          "count": 6,
+          "directionHitRate": 1,
+          "meanActual": -22.35,
+          "medianActual": -24.7,
+          "outcomeDistribution": {
+            "atOrBelowNeg10": 1,
+            "neg10ToNeg5": 0,
+            "neg5To0": 0,
+            "zero": 0,
+            "above0To5": 0,
+            "fiveTo10": 0,
+            "atOrAbove10": 0
+          },
+          "label": "LOW"
+        }
+      ],
+      "modelComparison": {
+        "distributedLag": {
+          "sampleCount": 1145,
+          "maeCents": 4.423,
+          "rmseCents": 6.997,
+          "directionalAccuracy": 0.739,
+          "band5": {
+            "band": 5,
+            "buy": {
+              "count": 132,
+              "percentActualDirection": 0.7652,
+              "percentActualAtLeastFiveCents": 0.5,
+              "mae": 7.2345,
+              "meanActual": 6.1371,
+              "medianActual": 5.15,
+              "expectedSavingsDollarsPer15Gal": 0.9206,
+              "meanSavingsWhenCorrectDollarsPer15Gal": 1.4191,
+              "meanMissedCostWhenWrongDollarsPer15Gal": 0.7035
+            },
+            "wait": {
+              "count": 173,
+              "percentActualDirection": 0.9191,
+              "percentActualAtLeastFiveCents": 0.6532,
+              "mae": 4.3608,
+              "meanActual": -7.3376,
+              "medianActual": -6.5,
+              "expectedSavingsDollarsPer15Gal": 1.1006,
+              "meanSavingsWhenCorrectDollarsPer15Gal": 1.3011,
+              "meanMissedCostWhenWrongDollarsPer15Gal": 1.1764
+            },
+            "fine": {
+              "count": 840,
+              "percentOfWeeks": 0.7336
+            },
+            "falseStrongSignalRate": 0.1475,
+            "strongShareOfWeeks": 0.2664
+          },
+          "band10": {
+            "band": 10,
+            "buy": {
+              "count": 26,
+              "percentActualDirection": 0.7692,
+              "percentActualAtLeastFiveCents": 0.5769,
+              "mae": 11.1673,
+              "meanActual": 10.7423,
+              "medianActual": 7.5,
+              "expectedSavingsDollarsPer15Gal": 1.6113,
+              "meanSavingsWhenCorrectDollarsPer15Gal": 2.2942,
+              "meanMissedCostWhenWrongDollarsPer15Gal": 0.665
+            },
+            "wait": {
+              "count": 35,
+              "percentActualDirection": 0.9714,
+              "percentActualAtLeastFiveCents": 0.9143,
+              "mae": 5.3381,
+              "meanActual": -13.9829,
+              "medianActual": -13.5,
+              "expectedSavingsDollarsPer15Gal": 2.0974,
+              "meanSavingsWhenCorrectDollarsPer15Gal": 2.1882,
+              "meanMissedCostWhenWrongDollarsPer15Gal": 0.99
+            },
+            "fine": {
+              "count": 1084,
+              "percentOfWeeks": 0.9467
+            },
+            "falseStrongSignalRate": 0.1148,
+            "strongShareOfWeeks": 0.0533
+          }
+        },
+        "spotOnly": {
+          "sampleCount": 1145,
+          "maeCents": 4.975,
+          "rmseCents": 7.593,
+          "directionalAccuracy": 0.6728,
+          "band5": {
+            "band": 5,
+            "buy": {
+              "count": 78,
+              "percentActualDirection": 0.6538,
+              "percentActualAtLeastFiveCents": 0.4231,
+              "mae": 9.5983,
+              "meanActual": 5.4385,
+              "medianActual": 2.65,
+              "expectedSavingsDollarsPer15Gal": 0.8158,
+              "meanSavingsWhenCorrectDollarsPer15Gal": 1.5968,
+              "meanMissedCostWhenWrongDollarsPer15Gal": 0.6594
+            },
+            "wait": {
+              "count": 67,
+              "percentActualDirection": 0.9254,
+              "percentActualAtLeastFiveCents": 0.7164,
+              "mae": 6.2455,
+              "meanActual": -9.1567,
+              "medianActual": -7.8,
+              "expectedSavingsDollarsPer15Gal": 1.3735,
+              "meanSavingsWhenCorrectDollarsPer15Gal": 1.6648,
+              "meanMissedCostWhenWrongDollarsPer15Gal": 2.238
+            },
+            "fine": {
+              "count": 1000,
+              "percentOfWeeks": 0.8734
+            },
+            "falseStrongSignalRate": 0.2207,
+            "strongShareOfWeeks": 0.1266
+          },
+          "band10": {
+            "band": 10,
+            "buy": {
+              "count": 9,
+              "percentActualDirection": 0.4444,
+              "percentActualAtLeastFiveCents": 0,
+              "mae": 17.3058,
+              "meanActual": -2.6444,
+              "medianActual": -2.4,
+              "expectedSavingsDollarsPer15Gal": -0.3967,
+              "meanSavingsWhenCorrectDollarsPer15Gal": 0.2625,
+              "meanMissedCostWhenWrongDollarsPer15Gal": 0.924
+            },
+            "wait": {
+              "count": 16,
+              "percentActualDirection": 1,
+              "percentActualAtLeastFiveCents": 1,
+              "mae": 6.6719,
+              "meanActual": -18.3375,
+              "medianActual": -16.65,
+              "expectedSavingsDollarsPer15Gal": 2.7506,
+              "meanSavingsWhenCorrectDollarsPer15Gal": 2.7506,
+              "meanMissedCostWhenWrongDollarsPer15Gal": null
+            },
+            "fine": {
+              "count": 1120,
+              "percentOfWeeks": 0.9782
+            },
+            "falseStrongSignalRate": 0.2,
+            "strongShareOfWeeks": 0.0218
+          }
+        },
+        "retailWholesale": {
+          "sampleCount": 1145,
+          "maeCents": 4.505,
+          "rmseCents": 7.219,
+          "directionalAccuracy": 0.7231,
+          "band5": {
+            "band": 5,
+            "buy": {
+              "count": 129,
+              "percentActualDirection": 0.6822,
+              "percentActualAtLeastFiveCents": 0.4729,
+              "mae": 8.2756,
+              "meanActual": 5.3039,
+              "medianActual": 4.3,
+              "expectedSavingsDollarsPer15Gal": 0.7956,
+              "meanSavingsWhenCorrectDollarsPer15Gal": 1.5179,
+              "meanMissedCostWhenWrongDollarsPer15Gal": 0.7548
+            },
+            "wait": {
+              "count": 93,
+              "percentActualDirection": 0.871,
+              "percentActualAtLeastFiveCents": 0.7957,
+              "mae": 5.6252,
+              "meanActual": -9.2484,
+              "medianActual": -9.3,
+              "expectedSavingsDollarsPer15Gal": 1.3873,
+              "meanSavingsWhenCorrectDollarsPer15Gal": 1.7898,
+              "meanMissedCostWhenWrongDollarsPer15Gal": 1.33
+            },
+            "fine": {
+              "count": 923,
+              "percentOfWeeks": 0.8061
+            },
+            "falseStrongSignalRate": 0.2387,
+            "strongShareOfWeeks": 0.1939
+          },
+          "band10": {
+            "band": 10,
+            "buy": {
+              "count": 33,
+              "percentActualDirection": 0.6364,
+              "percentActualAtLeastFiveCents": 0.4848,
+              "mae": 11.9209,
+              "meanActual": 7.503,
+              "medianActual": 4.9,
+              "expectedSavingsDollarsPer15Gal": 1.1255,
+              "meanSavingsWhenCorrectDollarsPer15Gal": 2.1921,
+              "meanMissedCostWhenWrongDollarsPer15Gal": 0.7412
+            },
+            "wait": {
+              "count": 27,
+              "percentActualDirection": 0.963,
+              "percentActualAtLeastFiveCents": 0.9259,
+              "mae": 5.7639,
+              "meanActual": -15.9963,
+              "medianActual": -16.2,
+              "expectedSavingsDollarsPer15Gal": 2.3994,
+              "meanSavingsWhenCorrectDollarsPer15Gal": 2.5298,
+              "meanMissedCostWhenWrongDollarsPer15Gal": 0.99
+            },
+            "fine": {
+              "count": 1085,
+              "percentOfWeeks": 0.9476
+            },
+            "falseStrongSignalRate": 0.2167,
+            "strongShareOfWeeks": 0.0524
+          }
+        },
+        "persistence": {
+          "sampleCount": 1145,
+          "maeCents": 5.07,
+          "rmseCents": 8.396,
+          "directionalAccuracy": 0.7302,
+          "band5": {
+            "band": 5,
+            "buy": {
+              "count": 223,
+              "percentActualDirection": 0.722,
+              "percentActualAtLeastFiveCents": 0.4305,
+              "mae": 9.4484,
+              "meanActual": 4.8933,
+              "medianActual": 3.4,
+              "expectedSavingsDollarsPer15Gal": 0.734,
+              "meanSavingsWhenCorrectDollarsPer15Gal": 1.3088,
+              "meanMissedCostWhenWrongDollarsPer15Gal": 0.7587
+            },
+            "wait": {
+              "count": 208,
+              "percentActualDirection": 0.8269,
+              "percentActualAtLeastFiveCents": 0.649,
+              "mae": 6.5115,
+              "meanActual": -5.9389,
+              "medianActual": -6.5,
+              "expectedSavingsDollarsPer15Gal": 0.8908,
+              "meanSavingsWhenCorrectDollarsPer15Gal": 1.3889,
+              "meanMissedCostWhenWrongDollarsPer15Gal": 1.4888
+            },
+            "fine": {
+              "count": 714,
+              "percentOfWeeks": 0.6236
+            },
+            "falseStrongSignalRate": 0.2274,
+            "strongShareOfWeeks": 0.3764
+          },
+          "band10": {
+            "band": 10,
+            "buy": {
+              "count": 101,
+              "percentActualDirection": 0.7228,
+              "percentActualAtLeastFiveCents": 0.5248,
+              "mae": 13.3624,
+              "meanActual": 6.995,
+              "medianActual": 5.7,
+              "expectedSavingsDollarsPer15Gal": 1.0493,
+              "meanSavingsWhenCorrectDollarsPer15Gal": 1.7813,
+              "meanMissedCostWhenWrongDollarsPer15Gal": 0.8593
+            },
+            "wait": {
+              "count": 80,
+              "percentActualDirection": 0.8125,
+              "percentActualAtLeastFiveCents": 0.75,
+              "mae": 8.2288,
+              "meanActual": -8.8737,
+              "medianActual": -10.1,
+              "expectedSavingsDollarsPer15Gal": 1.3311,
+              "meanSavingsWhenCorrectDollarsPer15Gal": 1.9313,
+              "meanMissedCostWhenWrongDollarsPer15Gal": 1.27
+            },
+            "fine": {
+              "count": 964,
+              "percentOfWeeks": 0.8419
+            },
+            "falseStrongSignalRate": 0.2376,
+            "strongShareOfWeeks": 0.1581
+          }
+        },
+        "zero": {
+          "sampleCount": 1145,
+          "maeCents": 5.518,
+          "rmseCents": 8.256,
+          "directionalAccuracy": 0,
+          "band5": {
+            "band": 5,
+            "buy": {
+              "count": 0,
+              "percentActualDirection": null,
+              "percentActualAtLeastFiveCents": null,
+              "mae": null,
+              "meanActual": null,
+              "medianActual": null,
+              "expectedSavingsDollarsPer15Gal": null,
+              "meanSavingsWhenCorrectDollarsPer15Gal": null,
+              "meanMissedCostWhenWrongDollarsPer15Gal": null
+            },
+            "wait": {
+              "count": 0,
+              "percentActualDirection": null,
+              "percentActualAtLeastFiveCents": null,
+              "mae": null,
+              "meanActual": null,
+              "medianActual": null,
+              "expectedSavingsDollarsPer15Gal": null,
+              "meanSavingsWhenCorrectDollarsPer15Gal": null,
+              "meanMissedCostWhenWrongDollarsPer15Gal": null
+            },
+            "fine": {
+              "count": 1145,
+              "percentOfWeeks": 1
+            },
+            "falseStrongSignalRate": null,
+            "strongShareOfWeeks": 0
+          },
+          "band10": {
+            "band": 10,
+            "buy": {
+              "count": 0,
+              "percentActualDirection": null,
+              "percentActualAtLeastFiveCents": null,
+              "mae": null,
+              "meanActual": null,
+              "medianActual": null,
+              "expectedSavingsDollarsPer15Gal": null,
+              "meanSavingsWhenCorrectDollarsPer15Gal": null,
+              "meanMissedCostWhenWrongDollarsPer15Gal": null
+            },
+            "wait": {
+              "count": 0,
+              "percentActualDirection": null,
+              "percentActualAtLeastFiveCents": null,
+              "mae": null,
+              "meanActual": null,
+              "medianActual": null,
+              "expectedSavingsDollarsPer15Gal": null,
+              "meanSavingsWhenCorrectDollarsPer15Gal": null,
+              "meanMissedCostWhenWrongDollarsPer15Gal": null
+            },
+            "fine": {
+              "count": 1145,
+              "percentOfWeeks": 1
+            },
+            "falseStrongSignalRate": null,
+            "strongShareOfWeeks": 0
+          }
+        }
+      },
+      "h14DistributedLag": {
+        "sampleCount": 1143,
+        "maeCents": 7.813
+      }
+    }
+  }
+}

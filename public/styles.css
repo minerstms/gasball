@@ -1,0 +1,148 @@
+:root {
+  --bg: #102019;
+  --ink: #f6f3ea;
+  --line: #3e5c4c;
+  --buy: #2f9e5f;
+  --fine: #e0b33a;
+  --wait: #e07a45;
+  --unknown: #8aa396;
+  --buy-ink: #b7ebc8;
+  --fine-ink: #f6e2a2;
+  --wait-ink: #f6c7ae;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-size: 22px;
+  line-height: 1.35;
+  max-width: 100%;
+}
+
+body {
+  min-height: 100vh;
+}
+
+main {
+  width: 100%;
+  max-width: 28rem;
+  margin: 0 auto;
+  padding: 16px 12px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.ball {
+  width: min(68vw, 240px);
+  aspect-ratio: 1;
+  margin: 12px auto 4px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  color: #102019;
+  background: var(--unknown);
+}
+
+.ball.buy { background: var(--buy); }
+.ball.fine { background: var(--fine); }
+.ball.wait { background: var(--wait); }
+.ball.unknown { background: var(--unknown); }
+
+.signal,
+.move,
+.sub,
+summary,
+button,
+input,
+label,
+h1,
+h2,
+p {
+  font-size: 22px;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+  text-align: center;
+  font-weight: 700;
+}
+
+.signal {
+  font-size: 36px;
+  letter-spacing: 0.06em;
+}
+
+.move {
+  font-size: 32px;
+}
+
+.signal.buy { color: var(--buy-ink); }
+.signal.fine { color: var(--fine-ink); }
+.signal.wait { color: var(--wait-ink); }
+.signal.unknown { color: var(--ink); }
+
+details {
+  margin-top: 12px;
+  border-top: 2px solid var(--line);
+  padding-top: 12px;
+}
+
+summary {
+  cursor: pointer;
+  text-align: center;
+  font-size: 22px;
+}
+
+#detail-body,
+#station-list,
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+button,
+input {
+  width: 100%;
+  font: inherit;
+  font-size: 22px;
+  color: var(--ink);
+  background: #1a3328;
+  border: 2px solid var(--line);
+  border-radius: 14px;
+  padding: 12px;
+}
+
+button[aria-pressed="true"] {
+  border-color: var(--fine);
+}
+
+input {
+  text-align: center;
+}
+
+label {
+  text-align: center;
+}
+
+#detail-body p {
+  text-align: left;
+}

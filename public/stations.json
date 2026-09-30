@@ -1,0 +1,61 @@
+{
+  "defaultStationId": "safeway-trinidad",
+  "stations": [
+    {
+      "id": "safeway-trinidad",
+      "retailer": "Safeway",
+      "name": "Safeway",
+      "marketId": "trinidad",
+      "marketName": "Trinidad, CO",
+      "city": "Trinidad",
+      "region": "CO",
+      "postalCode": "81082",
+      "address": "457 W Main St, Trinidad, CO 81082",
+      "lat": 37.1695,
+      "lon": -104.5005,
+      "forecastMarket": "colorado"
+    },
+    {
+      "id": "sams-pueblo",
+      "retailer": "Sam's Club",
+      "name": "Sam's Club",
+      "marketId": "pueblo",
+      "marketName": "Pueblo, CO",
+      "city": "Pueblo",
+      "region": "CO",
+      "postalCode": "81008",
+      "address": "412 Eagleridge Blvd, Pueblo, CO 81008",
+      "lat": 38.2544,
+      "lon": -104.6091,
+      "forecastMarket": "colorado"
+    },
+    {
+      "id": "sams-colorado-springs",
+      "retailer": "Sam's Club",
+      "name": "Sam's Club",
+      "marketId": "colorado-springs",
+      "marketName": "Colorado Springs, CO",
+      "city": "Colorado Springs",
+      "region": "CO",
+      "postalCode": "80906",
+      "address": "4385 Venetucci Boulevard, Colorado Springs, CO 80906",
+      "lat": 38.8339,
+      "lon": -104.8214,
+      "forecastMarket": "colorado"
+    },
+    {
+      "id": "sams-denver",
+      "retailer": "Sam's Club",
+      "name": "Sam's Club",
+      "marketId": "denver",
+      "marketName": "Denver, CO",
+      "city": "Denver",
+      "region": "CO",
+      "postalCode": "80238",
+      "address": "7805 E 35th Ave, Denver, CO 80238",
+      "lat": 39.7392,
+      "lon": -104.9903,
+      "forecastMarket": "denver"
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "builtAt": "2026-09-30T01:47:59.371Z",
+  "sources": [
+    {
+      "id": "EMM_EPMR_PTE_SCO_DPG",
+      "field": "retail_co",
+      "url": "https://www.eia.gov/dnav/pet/hist_xls/EMM_EPMR_PTE_SCO_DPGw.xls",
+      "align": "exact",
+      "sha256": "837fd1fe6b0a878b3c01a5725ff27f9f02d3c6a8f6ad2f59f8be3178446f3029",
+      "start": "2000-06-05",
+      "end": "2026-09-28",
+      "count": 1374
+    },
+    {
+      "id": "EMM_EPMR_PTE_YDEN_DPG",
+      "field": "retail_den",
+      "url": "https://www.eia.gov/dnav/pet/hist_xls/EMM_EPMR_PTE_YDEN_DPGw.xls",
+      "align": "exact",
+      "sha256": "5b81fb3b40f07ae3d54a088ecbd4037cfea3b47486f446aebca9ad86843374d4",
+      "start": "2000-06-05",
+      "end": "2026-09-28",
+      "count": 1374
+    },
+    {
+      "id": "EMM_EPM0_PTE_YDEN_DPG",
+      "field": "retail_den_allgrades",
+      "url": "https://www.eia.gov/dnav/pet/hist_xls/EMM_EPM0_PTE_YDEN_DPGw.xls",
+      "align": "exact",
+      "sha256": "a1f3b593d427fbe70c512d5d2e37566eb83142941f774f7cf02e58525f9fc506",
+      "start": "2000-06-05",
+      "end": "2026-09-28",
+      "count": 1374
+    },
+    {
+      "id": "EMM_EPMR_PTE_NUS_DPG",
+      "field": "retail_us",
+      "url": "https://www.eia.gov/dnav/pet/hist_xls/EMM_EPMR_PTE_NUS_DPGw.xls",
+      "align": "exact",
+      "sha256": "838a8c29a5941a91ff325b712ed992d4de1f64aadf0ba2d8a6ffe1c1e2f0f28f",
+      "start": "1990-08-20",
+      "end": "2026-09-28",
+      "count": 1879
+    },
+    {
+      "id": "EER_EPMRU_PF4_RGC_DPG",
+      "field": "gulf_spot",
+      "url": "https://www.eia.gov/dnav/pet/hist_xls/EER_EPMRU_PF4_RGC_DPGw.xls",
+      "align": "asof",
+      "sha256": "906da11e4cfd286b079ccaeddfb74d6582e9d72d062fac32ec4f7efc8d3c8a67",
+      "start": "1986-06-06",
+      "end": "2026-09-18",
+      "count": 2029
+    },
+    {
+      "id": "RWTC",
+      "field": "wti",
+      "url": "https://www.eia.gov/dnav/pet/hist_xls/RWTCw.xls",
+      "align": "asof",
+      "sha256": "52cf16991d61365ec41efba8933c82fb999d5db30f06e028a5161492a7de1844",
+      "start": "1986-01-03",
+      "end": "2026-09-18",
+      "count": 2104
+    },
+    {
+      "id": "RBRTE",
+      "field": "brent",
+      "url": "https://www.eia.gov/dnav/pet/hist_xls/RBRTEw.xls",
+      "align": "asof",
+      "sha256": "57f3584a6cbe7754d06b24578d09c36eb0d00b7a3ffd4abba2c1bf9c99d4b663",
+      "start": "1987-05-15",
+      "end": "2026-09-18",
+      "count": 2051
+    },
+    {
+      "id": "WGTSTP41",
+      "field": "padd4_stocks",
+      "url": "https://www.eia.gov/dnav/pet/hist_xls/WGTSTP41w.xls",
+      "align": "asof",
+      "sha256": "80cc10e29b34e25a2da5d33a5586fce53f35545228fd5c551cf983ed0ab343b6",
+      "start": "1990-01-05",
+      "end": "2026-09-18",
+      "count": 1912
+    }
+  ],
+  "stationPriceNote": "No free public historical pump-price series was found for Safeway Trinidad or Sam's Club Pueblo, Colorado Springs, or Denver. Current pump quotes on retailer sites are not a history and are not used as model inputs.",
+  "denverGradeNote": "Denver production target is weekly regular all-formulations retail (EMM_EPMR_PTE_YDEN_DPG). All-grades Denver (EMM_EPM0_PTE_YDEN_DPG) is stored as retail_den_allgrades for comparison and is not a regression input. Regular conventional Denver (EMM_EPMRU_PTE_YDEN_DPG) ends in November 2023. Regular reformulated Denver begins in November 2023 and is too short to train."
+}

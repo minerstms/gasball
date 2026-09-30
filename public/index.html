@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GasBall</title>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/icons/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="/icons/icon-192.png">
+  <meta name="theme-color" content="#102019">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="GasBall">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main>
+    <div id="ball" class="ball unknown" role="img" aria-label="GasBall">GasBall</div>
+    <h1 id="signal" class="signal">…</h1>
+    <p id="move" class="move"></p>
+    <p id="horizon" class="sub">Next 7 days</p>
+    <p id="confidence" class="sub"></p>
+    <p id="station-name" class="sub">Safeway</p>
+    <p id="station-market" class="sub">Trinidad market forecast</p>
+    <p id="status" class="sub"></p>
+    <details id="details">
+      <summary>Details</summary>
+      <div id="detail-body"></div>
+      <button id="locate" type="button">Use my location</button>
+      <p id="location-status" class="sub"></p>
+      <h2 class="sub">Pin a station</h2>
+      <div id="station-list"></div>
+    </details>
+  </main>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
